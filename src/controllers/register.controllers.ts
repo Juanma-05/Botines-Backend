@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import { User } from '../entities/User';
-import { AppDataSource } from '../db';
 
-export const createUser = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
 
     try {
         const {email, password} = req.body;
@@ -30,17 +29,19 @@ export const createUser = async (req: Request, res: Response) => {
 
 }
 
-export const getUsers = async (req: Request, res: Response) => {
-    const {email, password} = req.body
-    try{
-        const comparador = await AppDataSource.manager.findOne(User, {where:{email, password}})
-        if (comparador) {res.json({mensaje: "ingreso correcto"})}
-        else {res.status(400).json({mensaje: "ingreso fallido"})}
-    }
-    catch(error){
-        console.log(error)
-    }
-    // try {
+// export const getUsers = async (req: Request, res: Response) => {
+//     try{
+//         const {email, password} = req.body
+//         const comparador = await User .findOne( {where:{email, password}})
+//         if (comparador) {
+//             return res.json({mensaje: "ingreso correcto"})}
+
+//         else {res.status(400).json({mensaje: "ingreso fallido"})}
+//     }
+//     catch(error){
+//         console.log(error)
+    // }
+    // // try {
     //     const users = await User.find();
     //     return res.json(users);
     // } catch (error) {
@@ -48,7 +49,7 @@ export const getUsers = async (req: Request, res: Response) => {
     //         return res.status(400).json({ message: error.message });
     //     }
     // }
-}
+// }
 
 // export const updateUser = async (req: Request, res: Response) => {
 

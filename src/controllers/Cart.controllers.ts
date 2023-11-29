@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { Request } from 'express';
-import { AppDataSource } from '../db';
+import { AppDataSource } from '../database';
 import Cart from "../entities/Cart" 
 
 

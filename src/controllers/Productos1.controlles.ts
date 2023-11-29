@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'express'; // req(solictud) res (respuesta)
 import {Products1} from "../entities/Products1"
 
 export const createProducts1 = async (req: Request, res: Response) => {
