@@ -1,0 +1,34 @@
+import { Request, Response } from 'express';
+import {Products} from "../entities/Products"
+
+export const createProducts = async (req: Request, res: Response) => {
+
+    try {
+        const { name, price, img } = req.body;
+
+        const prod = new Products();
+        prod.name = name;
+        prod.price = price;
+        prod.img = img;
+
+        await prod.save();
+
+        return res.json(prod);
+    } catch (error) {
+        if (error instanceof Error) {
+            return res.status(400).json({ message: error.message });
+        }
+    }
+}
+
+export const getProducts = async (req: Request, res: Response) => {
+
+    try {
+        const prod = await Products.find();
+        return res.json(prod);
+    } catch (error) {
+        if (error instanceof Error) {
+            return res.status(400).json({ message: error.message });
+        }
+    }
+}
